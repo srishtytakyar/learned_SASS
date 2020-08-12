@@ -1,0 +1,71 @@
+@import 'config';
+@import'resets';
+
+@function weight($weight-name){
+    @return map-get($font-weights,$weight-name);
+}
+
+@mixin flexcenter($direction){
+   
+    justify-content:$direction;
+    
+}
+@mixin mobile {
+    @media(max-width: $mobile){
+        @content;
+    }
+}
+    body {
+        background:$primary-color;
+        
+        
+    }
+    
+    .main{
+        @include flexcenter(center);
+        display:flex;
+        width:80%;
+        margin: 0 auto;
+        #{&}__para{
+            margin:50px;
+        font-weight: weight(regular);
+        font-size:$i/4;
+          color:$text-color;
+          &:hover{
+              color:pink;
+          }
+          @include mobile{
+              flex-direction:column;
+          }
+
+        }
+        #{&}__title{
+            font-weight: weight(bold);
+            font-size:$i;
+            color:$accent-color;
+            &:hover{
+                color:#fff;
+
+            }
+            @include mobile{
+                flex-direction:column;
+            } 
+        } 
+          
+        
+    }
+    .images{
+        
+        width:60%;
+        color:#fff;
+        margin:100px;
+        @include flexcenter(center);
+        @include mobile{
+            flex-direction: row;
+        }
+         #{&}__icon{
+       margin-top: 30px;
+        width:80px;
+        height:80px;
+    }
+    }
